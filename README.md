@@ -190,6 +190,30 @@ A complete Postman collection is included under [`postman/CSR210_Practical_API.p
 
 ---
 
+## 📸 Verification Screenshots
+
+All official submission screenshots are stored in the [`screenshots/`](screenshots/) directory:
+
+### 1. PostgreSQL Database Terminal (`csr210_db.students`)
+![PostgreSQL Database](screenshots/04_postgresql_database_terminal.png)
+
+### 2. Task 1 - Postman Testing (GET /students)
+![Postman Task 1 GET](screenshots/01_postman_task1_get_students.png)
+
+### 3. Task 1 - Postman Testing (POST /students)
+![Postman Task 1 POST](screenshots/02_postman_task1_post_student.png)
+
+### 4. Task 5 - Full Integration Postman Testing (GET /students)
+![Postman Task 5 GET](screenshots/05_postman_task5_get_students.png)
+
+### 5. Task 5 - Full Integration Postman Testing (PUT /students/1)
+![Postman Task 5 PUT](screenshots/06_postman_task5_put_student.png)
+
+### 6. Task 2 - Flask Web Application Interface
+![Flask Web UI](screenshots/08_flask_web_students.png)
+
+---
+
 ## 📝 Short Explanation of Implementation (Submission Item 4)
 
 1. **FastAPI & REST Design (Tasks 1 & 5):**
