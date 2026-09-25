@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Home - CSR210 Student Management{% endblock %}
+
+{% block content %}
+<div class="row align-items-center py-5">
+    <div class="col-lg-8 mx-auto text-center">
+        <div class="card shadow-sm border-0 p-4 p-md-5">
+            <div class="card-body">
+                <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3 fw-semibold">
+                    CSR210 - Advanced Programming & Databases
+                </span>
+                <h1 class="display-5 fw-bold text-dark mb-3">Welcome to the Student Portal</h1>
+                <p class="lead text-secondary mb-4">
+                    A comprehensive web portal built with Flask and Jinja2 template inheritance. Manage student profiles, browse enrolled students, register new candidates, and view detailed academic performance.
+                </p>
+
+                <!-- Statistics Showcase (Using Jinja2 Variables) -->
+                <div class="row g-3 justify-content-center mb-4">
+                    <div class="col-sm-5">
+                        <div class="border rounded p-3 bg-light">
+                            <h2 class="fw-bold text-primary mb-0">{{ total_students }}</h2>
+                            <small class="text-muted text-uppercase fw-semibold">Total Students</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="border rounded p-3 bg-light">
+                            <h2 class="fw-bold text-success mb-0">{{ avg_marks }}%</h2>
+                            <small class="text-muted text-uppercase fw-semibold">Average Marks</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ url_for('student_list') }}" class="btn btn-primary btn-lg px-4 shadow-sm">
+                        <i class="bi bi-table me-2"></i>View Student List
+                    </a>
+                    <a href="{{ url_for('add_student') }}" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-person-plus me-2"></i>Add New Student
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

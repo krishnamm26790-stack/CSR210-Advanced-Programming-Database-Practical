@@ -1,0 +1,187 @@
+{
+  "info": {
+    "name": "CSR210 - Student Management API Collection",
+    "_postman_id": "c1f7b03e-436d-4781-a94b-486016cb80b4",
+    "description": "Comprehensive Postman collection for CSR210 Advanced Programming & Databases practical assessment (Task 1 and Task 5).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Task 1 - Basic FastAPI",
+      "item": [
+        {
+          "name": "1. GET Root / Welcome Message",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "2. GET /students - Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "3. GET /students/:id - Get Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students", "1"]
+            }
+          }
+        },
+        {
+          "name": "4. POST /students - Add New Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Vikram Sharma\",\n  \"email\": \"vikram.sharma@example.com\",\n  \"course\": \"B.Tech CSE\",\n  \"marks\": 88.5\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/students",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "5. DELETE /students/:id - Delete Student",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Task 5 - Final Integration API (FastAPI + PG + SQLAlchemy)",
+      "item": [
+        {
+          "name": "1. POST /students - Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Meera Nambiar\",\n  \"email\": \"meera.nambiar@example.com\",\n  \"course\": \"B.Tech Artificial Intelligence\",\n  \"marks\": 94.0\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/students",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "2. GET /students - Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "3. GET /students/:id - Get Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students", "1"]
+            }
+          }
+        },
+        {
+          "name": "4. PUT /students/:id - Update Student",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marks\": 98.5,\n  \"course\": \"B.Tech AI (Honors)\"\n}"
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/students/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students", "1"]
+            }
+          }
+        },
+        {
+          "name": "5. DELETE /students/:id - Delete Student",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:8000/students/1",
+              "protocol": "http",
+              "host": ["127", "0", "0", "1"],
+              "port": "8000",
+              "path": ["students", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
