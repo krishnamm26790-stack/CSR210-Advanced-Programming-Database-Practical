@@ -4,12 +4,12 @@ Course: CSR210 - Advanced Programming & Databases
 """
 
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 # Load .env if present
-load_dotenv()
+load_dotenv(find_dotenv())
 
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = os.getenv("DB_PORT", "5432")

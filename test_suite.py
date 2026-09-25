@@ -1,19 +1,20 @@
-"""
-Automated Test Suite for CSR210 Practical Tasks
-Tests Task 1 (FastAPI) and Task 2 (Flask) in-memory without needing separate server processes.
-"""
-
+import os
 import sys
 import unittest
+import importlib.util
 from fastapi.testclient import TestClient
 
-# 1. Test Task 1
-sys.path.insert(0, "task1_fastapi")
-import main as task1_module
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
 
-# 2. Test Task 2
-sys.path.insert(0, "task2_flask")
-import app as task2_module
+task1_module = load_module("task1_app", "task1_fastapi/main.py")
+task2_module = load_module("task2_app", "task2_flask/app.py")
+sys.path.insert(0, os.path.abspath("task5_integration"))
+task5_module = load_module("task5_app", "task5_integration/main.py")
 
 
 class TestTask1FastAPI(unittest.TestCase):
@@ -133,6 +134,40 @@ class TestTask2Flask(unittest.TestCase):
         html = response.data.decode("utf-8")
         self.assertIn("Diya Patel", html)
         print("[PASS] Task 2: Bonus Search functionality verified.")
+
+
+# 3. Test Task 5 (Integration with PostgreSQL & SQLAlchemy)
+class TestTask5Integration(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.client = TestClient(task5_module.app)
+
+    def test_01_root(self):
+        res = self.client.get("/")
+        self.assertEqual(res.status_code, 200)
+        print("[PASS] Task 5: Root health endpoint OK.")
+
+    def test_02_create_and_get_students(self):
+        payload = {
+            "name": "Integration Test Student",
+            "email": "auto_test_unique@example.com",
+            "course": "B.Tech CSE",
+            "marks": 93.5
+        }
+        res = self.client.post("/students", json=payload)
+        self.assertIn(res.status_code, [201, 400])
+
+        res_list = self.client.get("/students")
+        self.assertEqual(res_list.status_code, 200)
+        self.assertIsInstance(res_list.json(), list)
+        print(f"[PASS] Task 5: POST & GET /students returned {len(res_list.json())} students.")
+
+    def test_03_update_student(self):
+        res_list = self.client.get("/students")
+        first_id = res_list.json()[0]["id"]
+        res = self.client.put(f"/students/{first_id}", json={"marks": 97.0})
+        self.assertEqual(res.status_code, 200)
+        print(f"[PASS] Task 5: PUT /students/{first_id} updated marks successfully.")
 
 
 if __name__ == "__main__":
